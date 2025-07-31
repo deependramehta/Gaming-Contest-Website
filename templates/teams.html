@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registered Teams - GameArena</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="logo glitch">⚡GAMEARENA⚡</div>
+    <ul class="nav-links">
+      <li><a href="/">HOME</a></li>
+      <li><a href="/#event-info">EVENT</a></li>
+      <li><a href="/#registration">REGISTER</a></li>
+      <li><a href="/teams">TEAMS</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="teams-section">
+  <div class="container">
+    <h2 class="section-title">REGISTERED TEAMS</h2>
+    {% if teams %}
+      <div class="teams-grid">
+        {% for team in teams %}
+          <div class="team-card">
+            <h3>{{ team.team_name }}</h3>
+            <p class="leader">Leader: {{ team.leader }}</p>
+            <p>Experience: {{ team.experience }}</p>
+            <p>Special: {{ team.special }}</p>
+            <ul class="team-members">
+              {% for member in team.members %}
+                <li>{{ member }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="color:white; text-align:center;">No teams registered yet.</p>
+    {% endif %}
+  </div>
+</section>
+
+</body>
+</html>

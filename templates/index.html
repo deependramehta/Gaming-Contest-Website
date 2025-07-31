@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameArena - Ultimate Gaming Contest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+ <!-- Attach your CSS here -->
+</head>
+<body>
+
+    <!-- Gaming Background -->
+    <div class="gaming-bg"></div>
+    <div class="circuit-pattern"></div>
+    
+    <!-- Floating Gaming Elements -->
+    <div class="floating-elements">
+        <div class="floating-element">🎮</div>
+        <div class="floating-element">⚡</div>
+        <div class="floating-element">🏆</div>
+        <div class="floating-element">🎯</div>
+    </div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo glitch">⚡GAMEARENA⚡</div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#event-info">EVENT</a></li>
+                <li><a href="#registration">REGISTER</a></li>
+                <li><a href="/teams">TEAMS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content container">
+            <h1>ULTIMATE GAMING CONTEST 2024</h1>
+            <p>Enter the arena. Claim your victory. Become legendary.</p>
+            <a href="#registration" class="cta-button">REGISTER NOW</a>
+        </div>
+    </section>
+
+    <!-- Event Info -->
+    <section id="event-info" class="event-info">
+        <div class="container">
+            <h2 class="section-title">EVENT DETAILS</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="gaming-icon">📅</div>
+                    <h3>DATE & TIME</h3>
+                    <p>December 15-17, 2024<br>9:00 AM - 9:00 PM<br>3 Days of Epic Gaming</p>
+                </div>
+                <div class="info-card">
+                    <div class="gaming-icon">💰</div>
+                    <h3>ENTRY FEE</h3>
+                    <p>$50 per team<br>Early bird: $40<br>(before Dec 1)</p>
+                </div>
+                <div class="info-card">
+                    <div class="gaming-icon">🏆</div>
+                    <h3>PRIZE POOL</h3>
+                    <p>1st Place: $5,000<br>2nd Place: $3,000<br>3rd Place: $2,000</p>
+                </div>
+                <div class="info-card">
+                    <div class="gaming-icon">🎮</div>
+                    <h3>GAME MODE</h3>
+                    <p>4v4 Tournament<br>Multiple Rounds<br>Best of 3 Matches</p>
+                </div>
+                <div class="info-card">
+                    <div class="gaming-icon">👥</div>
+                    <h3>TEAM SIZE</h3>
+                    <p>6 Players per Team<br>1 Team Leader<br>2 Substitutes Allowed</p>
+                </div>
+                <div class="info-card">
+                    <div class="gaming-icon">📍</div>
+                    <h3>VENUE</h3>
+                    <p>GameArena Stadium<br>101 Gaming Street<br>Mumbai, India 11001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section id="registration" class="registration">
+        <div class="container">
+            <h2 class="section-title">TEAM REGISTRATION</h2>
+            <div class="form-container">
+                <div class="success-message" id="success-message">
+                    Team registered successfully! Welcome to the arena!
+                </div>
+                <div class="error-message" id="error-message">
+                    Error: Please fill in all required fields.
+                </div>
+                
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="team-name">TEAM NAME *</label>
+                        <input type="text" id="team-name" name="teamName" required placeholder="Enter your team name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="leader-name">TEAM LEADER NAME *</label>
+                        <input type="text" id="leader-name" name="leaderName" required placeholder="Enter team leader name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="leader-email">TEAM LEADER EMAIL *</label>
+                        <input type="email" id="leader-email" name="leaderEmail" required placeholder="Enter email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="leader-phone">TEAM LEADER PHONE *</label>
+                        <input type="tel" id="leader-phone" name="leaderPhone" required placeholder="Enter phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>TEAM MEMBERS *</label>
+                        <div id="members-container">
+                            <div class="member-input">
+                                <input type="text" placeholder="Member 1 Name" class="member-name" required>
+                                <input type="email" placeholder="Member 1 Email" class="member-email" required>
+                            </div>
+                            <div class="member-input">
+                                <input type="text" placeholder="Member 2 Name" class="member-name" required>
+                                <input type="email" placeholder="Member 2 Email" class="member-email" required>
+                            </div>
+                            <div class="member-input">
+                                <input type="text" placeholder="Member 3 Name" class="member-name" required>
+                                <input type="email" placeholder="Member 3 Email" class="member-email" required>
+                            </div>
+                            <div class="member-input">
+                                <input type="text" placeholder="Member 4 Name" class="member-name" required>
+                                <input type="email" placeholder="Member 4 Email" class="member-email" required>
+                            </div>
+                        </div>
+                        <button type="button" class="add-member" onclick="addMember()">+ ADD MEMBER</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">EXPERIENCE LEVEL</label>
+                        <select id="experience" name="experience">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="special-requirements">SPECIAL REQUIREMENTS</label>
+                        <input type="text" id="special-requirements" name="specialRequirements" placeholder="Any special requirements or notes...">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">REGISTER</button>
+</form>
+</div>
+</section>
+
+                    ...
+<!-- END of all sections -->
+<script>
+ function addMember() {
+    const container = document.getElementById('members-container');
+    const div = document.createElement('div');
+    div.className = 'member-input';
+    div.innerHTML = `
+      <input type="text" placeholder="Member Name" class="member-name" required>
+      <input type="email" placeholder="Member Email" class="member-email" required>
+    `;
+    container.appendChild(div);
+  }
+
+  const form = document.getElementById('registration-form');
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const members = Array.from(document.querySelectorAll('.member-input')).map(input => {
+      return {
+        name: input.querySelector('.member-name').value,
+        email: input.querySelector('.member-email').value
+      };
+    });
+
+    const data = {
+      teamName: document.getElementById('team-name').value,
+      leaderName: document.getElementById('leader-name').value,
+      leaderEmail: document.getElementById('leader-email').value,
+      leaderPhone: document.getElementById('leader-phone').value,
+      experience: document.getElementById('experience').value,
+      specialRequirements: document.getElementById('special-requirements').value,
+      members: members
+    };
+
+    try {
+      const response = await fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+        form.reset();
+      } else {
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('success-message').style.display = 'none';
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      document.getElementById('error-message').style.display = 'block';
+      document.getElementById('success-message').style.display = 'none';
+    }
+  });
+</script>
+</body>
+</html>
